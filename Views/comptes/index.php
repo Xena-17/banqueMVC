@@ -6,6 +6,7 @@
         <th>NumeroCompte</th>
         <th>Solde</th>
         <th>FK_Client</th>
+        <th>Actions</th>
     </thead>
     <tbody>
         <?php 
@@ -15,6 +16,9 @@
                echo "<td>". $compte ["NumeroCompte"] . "</td>";
                echo "<td>". $compte ["Solde"] . "</td>";
                echo "<td>". $compte ["FK_Client"] . "</td>";
+               echo "<td> <button onclick='redirectToDetailsCompte(".$compte["ID"] .")'>Voir détails</button></td>";        
+               echo "</tr>";
+                // Ajouter un td et un bouton faisant une redirection via une function js
             echo "</tr>";
         }
          ?>
@@ -23,5 +27,9 @@
 <script type="text/javascript">
 function redirectToCreateCompte() {
     window.location.replace("../Controllers/CompteController.php?action=create");
+} 
+function redirectToDetailsCompte(id) {
+    window.location.replace("../Controllers/CompteController.php?action=details&id="+ id);
 }
+// Créé la function JS pour etre rediriger
 </script>

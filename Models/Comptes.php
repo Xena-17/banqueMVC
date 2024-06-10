@@ -18,11 +18,16 @@ function fetchComptes() {
     $request->execute([$NumeroCompte, $Solde, $FK_Client]);
 }
 
-function getComptesByClient ($idClient) {
+function getCompteById($id) {
     $bdd = new BDD();
     $conn = $bdd->connect();
-    $request = $conn->prepare('SELECT ID, NumeroCompte, Solde FROM comptes WHERE FK_Client =?;');
-    $request->execute([$idClient]);
-    return $request->fetchAll(PDO::FETCH_ASSOC);
- 
+    $request = $conn->prepare('SELECT comptes.ID, NumeroCompte, Solde, Nom, Prenom, Mail, Telephone 
+                                FROM comptes 
+                                INNER JOIN clients on clients.ID = FK_Client
+                                WHERE comptes.ID = ?;');                           
+    $request->execute([$id]);
+    return $request->fetch(PDO::FETCH_ASSOC);
 }
+
+
+// Crée une fonction pour récuperer le compte par son id avec les infos du client (JOINTURE)

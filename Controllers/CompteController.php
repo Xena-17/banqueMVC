@@ -22,4 +22,14 @@ else
         insertComptes($NumeroCompte,$Solde,$FK_Client);
         header('Location: CompteController.php');
         }
+    if ($_GET['action']=='details'){        
+        $id = $_GET['id']; 
+        $compte = getCompteByID($id);
+        include '../Views/comptes/details.php';
+        }
 }
+
+ // ajouter une condition $_GET['action'] == details
+    // Récuperer l'id du compte 
+    // afficher les infos du compte et du client associer a celui ci
+    // Faire un includes de la page comptes/details.php
