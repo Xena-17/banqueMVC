@@ -7,13 +7,13 @@ require_once("BDD.php");
 function fetchComptes() {
     $bdd = new BDD();
     $conn = $bdd->connect();
-    $request = $conn->prepare('SELECT ID, NumeroCompte, Solde, FK_Clients FROM comptes;');
+    $request = $conn->prepare('SELECT ID, NumeroCompte, Solde, FK_Client FROM comptes;');
     $request->execute();
     return $request->fetchAll(PDO::FETCH_ASSOC);
  }
- function insertComptes($ID, $NumeroCompte, $Solde, $FK_Clients){
+ function insertComptes ($NumeroCompte, $Solde, $FK_Client){
     $bdd = new BDD();
     $conn = $bdd->connect();
-    $request = $conn->prepare('INSERT INTO comptes (ID, NumeroCompte, Solde, FK_Clients) VALUES (?,?,?,?);');
-    $request->execute([$ID, $NumeroCompte, $Solde, $FK_Clients]);
+    $request = $conn->prepare('INSERT INTO comptes (NumeroCompte, Solde, FK_Client) VALUES (?,?,?);');
+    $request->execute([$NumeroCompte, $Solde, $FK_Client]);
 }

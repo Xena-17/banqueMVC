@@ -1,6 +1,5 @@
 
-
-//faire l'affichage sous forme de tableau par exemple ou de liste puce. Utilisation d'un foreach
+<button onclick="redirectToCreateCompte()">Ajouter un compte</button>
 <table>
     <thead>
         <th>ID</th>
@@ -22,7 +21,7 @@
     </tbody>
     </table>
 <script type="text/javascript">
-function redirectToCreateComptes() {
+function redirectToCreateCompte() {
     window.location.replace("../Controllers/CompteController.php?action=create");
 }
 </script>

@@ -13,11 +13,10 @@ else
     }
     if ($_GET['action']== 'insert'){
         var_dump($_POST);
-        $ID = $_POST['ID'];
         $NumeroCompte = $_POST['NumeroCompte'];
         $Solde=$_POST['Solde'];
-        $FK_Clients=$_POST['FK_Clients'];
-        insertClient($ID,$NumeroCompte,$Solde,$FK_Clients);
+        $FK_Client=$_POST['FK_Client'];
+        insertComptes($NumeroCompte,$Solde,$FK_Client);
         header('Location: CompteController.php');
         }
 }
