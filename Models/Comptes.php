@@ -17,3 +17,12 @@ function fetchComptes() {
     $request = $conn->prepare('INSERT INTO comptes (NumeroCompte, Solde, FK_Client) VALUES (?,?,?);');
     $request->execute([$NumeroCompte, $Solde, $FK_Client]);
 }
+
+function getComptesByClient ($idClient) {
+    $bdd = new BDD();
+    $conn = $bdd->connect();
+    $request = $conn->prepare('SELECT ID, NumeroCompte, Solde FROM comptes WHERE FK_Client =?;');
+    $request->execute([$idClient]);
+    return $request->fetchAll(PDO::FETCH_ASSOC);
+ 
+}

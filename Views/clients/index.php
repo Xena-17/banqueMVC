@@ -1,11 +1,4 @@
 
-
-// var_dump($clients);
-
-// require_once 'Models/Client.php';
-
-// $clients = fetchClients();
-
 <button onclick="redirectToCreateClient()">Ajouter un client</button>
 <table>
     <thead>
@@ -14,6 +7,7 @@
         <th>Prenom</th>
         <th>Mail</th>
         <th>Telephone</th>
+        <th>Actions</th>
     </thead>
     <tbody>
         <?php 
@@ -24,6 +18,7 @@
                echo "<td>". $client ["Prenom"] . "</td>";
                echo "<td>". $client ["Mail"] . "</td>";
                echo "<td>". $client ["Telephone"] . "</td>";
+               echo "<td> <button onclick='redirectToDetailsClient(".$client["ID"] .")'>Voir Client</button></td>";        
             echo "</tr>";
         }
          ?>
@@ -33,4 +28,8 @@
 function redirectToCreateClient() {
     window.location.replace("../Controllers/ClientController.php?action=create");
 }
+function redirectToDetailsClient(clientId) {
+    window.location.replace("../Controllers/ClientController.php?action=details&id="+ clientId);
+}
+
 </script>

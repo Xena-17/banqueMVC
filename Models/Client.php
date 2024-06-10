@@ -17,3 +17,11 @@ function insertClient($nom, $prenom, $mail, $telephone) {
     $request = $conn->prepare('INSERT INTO clients (Nom, Prenom, Mail, Telephone) VALUES (?,?,?,?);');
     $request->execute([$nom, $prenom, $mail, $telephone]);
 }
+
+function getClientById($id) {
+    $bdd = new BDD();
+    $conn = $bdd->connect();
+    $request = $conn->prepare('SELECT ID, Nom, Prenom, Mail, Telephone FROM clients WHERE ID = ?;');
+    $request->execute([$id]);
+    return $request->fetch(PDO::FETCH_ASSOC);
+}
