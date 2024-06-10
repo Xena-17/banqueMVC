@@ -1,6 +1,7 @@
 <?php
 
 require_once '../Models/Comptes.php';
+require_once '../Models/Client.php';
 
 if (!isset($_GET['action'])) {
     $comptes = fetchComptes();
@@ -9,9 +10,11 @@ if (!isset($_GET['action'])) {
 else
 {
     if ($_GET['action']=="create") {
+        $clients =fetchClients();
         include '../Views/comptes/create.php';
     }
     if ($_GET['action']== 'insert'){
+
         var_dump($_POST);
         $NumeroCompte = $_POST['NumeroCompte'];
         $Solde=$_POST['Solde'];

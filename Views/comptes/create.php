@@ -5,6 +5,14 @@
     <label for="Solde">Solde</label>
     <input type="number"name="Solde" id="Solde" placeholder="Renseigner le solde du compte" required>
     <label for="FK_Client">FK_Client</label>
-    <input type="number" name="FK_Client" id="FK_Client" placeholder="Renseigner le FK du compte " required>
-    <input type="submit" value="Envoyer">
+    <select name="FK_Client" id="FK_Client">
+        <?php
+        foreach ($clients as $client) {
+            echo "<option value='". $client["ID"]. "'>";
+            echo $client["Nom"]. " ". $client["Prenom"];
+            echo "</option>";
+        }
+       ?>
+    </select>
+        <input type="submit" value="Envoyer">
 </form>
