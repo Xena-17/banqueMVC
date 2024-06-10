@@ -20,4 +20,9 @@
         }
          ?>
     </tbody>
-</table>
+    </table>
+<script type="text/javascript">
+function redirectToCreateComptes() {
+    window.location.replace("../Controllers/CompteController.php?action=create");
+}
+</script>
