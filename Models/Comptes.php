@@ -28,6 +28,18 @@ function getCompteById($id) {
     $request->execute([$id]);
     return $request->fetch(PDO::FETCH_ASSOC);
 }
+function updateCompteMontantDebiteur($montant, $id) {
+    $bdd = new BDD();
+    $conn = $bdd->connect();
+    $request = $conn->prepare('UPDATE comptes SET Solde = Solde + ? WHERE ID =?;');
+    $request->execute([$montant, $id]);
+}
+function updateCompteMontantBeneficiaire($montant, $id) {
+    $bdd = new BDD();
+    $conn = $bdd->connect();
+    $request = $conn->prepare('UPDATE comptes SET Solde = Solde + ? WHERE ID =?;');
+    $request->execute([$montant, $id]);
+}
 
 
 // Crée une fonction pour récuperer le compte par son id avec les infos du client (JOINTURE)
